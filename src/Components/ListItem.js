@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import styles from "./ListItem.module.css";
 
 class ShoppingItem extends Component {
- 
-  
+  render() {
+    let checkedStyle = this.props.item.checked
+      ? styles.checked
+      : styles.unChecked;
 
-   render() {
-    let checkedStyle = this.state.isChecked ? styles.checked : styles.unChecked
-
-    return (      
-        <div className={`${styles.item} ${checkedStyle}`}>
+    return (
+      <div className={`${styles.item} ${checkedStyle}`}>
         <div className={styles.itemText}>
           <p>{this.props.item.name}</p>
         </div>
@@ -18,9 +17,11 @@ class ShoppingItem extends Component {
           <input
             type="checkbox"
             className={styles.checkbox}
-            defaultChecked={this.state.isChecked}
-            value={this.state.isChecked}
-            onChange={this.handleChangeChk}
+            defaultChecked={this.props.item.checked}
+            value={this.props.item.checked}
+            onChange={() => {
+              this.props.toggleItemCheck(this.props.item.id);
+            }}
           />
 
           <button

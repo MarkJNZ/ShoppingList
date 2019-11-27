@@ -1,10 +1,17 @@
 .item {
   color: white;
-  background-color: DodgerBlue;
   padding: 10px;
   font-family: Arial;
   display: flex;
   flex-direction: row;
+}
+
+.checked {
+  background-color: rgb(0, 157, 79);
+}
+
+.unChecked {
+  background-color: DodgerBlue;
 }
 
 .itemText {

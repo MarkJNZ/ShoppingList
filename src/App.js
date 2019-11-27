@@ -5,9 +5,23 @@ import AddItemForm from "./Components/AddItemForm";
 class App extends Component {
   state = {
     items: [
-      { id: 1, name: "Boeing 747" },
-      { id: 2, name: "Airbus A380" }
+      { id: 1, name: "Boeing 747", checked: false},
+      { id: 2, name: "Airbus A380", checked: false }
     ]
+  };
+  handleCheck = id => {
+    const items = this.state.items;
+    const index = items.findIndex(item => item.id === id);
+    const item = items[index];
+    const newItem = { ...item};
+    const itemsNew = [...items.slice(0, index), ,...items.slice(index + 1)];
+    this.setState({
+      items: itemsNew
+    });
+
+    this.setState({
+      isChecked: !this.state.isChecked
+    });
   };
   handleRemoveItem = id => {
     const items = this.state.items;
